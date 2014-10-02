@@ -1,0 +1,16 @@
+{% if not agrupacion.id %}
+<form role="form"  method="POST" action ="{% url 'agrupacion' %}">{% csrf_token %}
+{% else %}
+<form role="form"  method="POST" action ="{% url 'edit_agrupacion' agrupacion.id %}">{% csrf_token %}
+{% endif %}
+	<div class="form-group">
+		 <label for="descripcion" class>Descripcion</label>{{form.descripcion}}
+	</div>
+	{% if not agrupacion.id %}
+	 	<button type="submit" class="btn btn-info pull-right">Nuevo</button><br><br>
+	 {% else %}
+	 	<button type="submit" class="btn btn-info pull-right">Modificar</button>  
+	 	<a href="{% url 'agrupacion' %}" class="btn btn-link pull-right" >Cancelar</a>
+	 	<br><br>
+	 {% endif %}
+</form>

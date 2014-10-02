@@ -1,0 +1,19 @@
+{% if not licencia.id %}
+<form role="form"  method="POST" action ="{% url 'licencia' %}">{% csrf_token %}
+{% else %}
+<form role="form"  method="POST" action ="{% url 'edit_licencia' licencia.id %}">{% csrf_token %}
+{% endif %}
+	<div class="form-group">
+		 <label for="codigo" class>Codigo</label>{{form.codigo}}
+	</div>
+	<div class="form-group">
+		 <label for="descripcion" class>Descripcion</label>{{form.descripcion}}
+	</div>
+	{% if not licencia.id %}
+	 	<button type="submit" class="btn btn-info pull-right">Nuevo</button><br><br>
+	 {% else %}
+	 	<button type="submit" class="btn btn-info pull-right">Modificar</button>  
+	 	<a href="{% url 'licencia' %}" class="btn btn-link pull-right" >Cancelar</a>
+	 	<br><br>
+	 {% endif %}
+</form>
