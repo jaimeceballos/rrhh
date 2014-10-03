@@ -73,7 +73,7 @@ class RefCiudades(models.Model):
     pais = models.ForeignKey('RefPaises', on_delete=models.PROTECT)
     
     def __unicode__(self):
-        return  u'%s' %  (self.descripcion)
+        return  u'%s %s %s' %  (self.descripcion,self.provincia.descripcion,self.pais.descripcion)
         self.descripcion = self.descripcion.upper()
 
     def save(self, force_insert=False, force_update=False):
@@ -267,7 +267,7 @@ class RefEscalafon(models.Model):
     descripcion = models.CharField(max_length=50)
 
     def __unicode__(self):
-        return u'%s' % (self.descripcion)
+        return u'%s - %s' % (self.agrupacion.descripcion,self.descripcion)
         self.descripcion = self.descripcion.upper()
 
     def save(self, force_insert=False,force_update=False):

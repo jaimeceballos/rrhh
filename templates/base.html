@@ -12,6 +12,7 @@
   <link rel="shortcut icon" href="{{STATIC_URL}}img/escudo.png">
   <link rel="stylesheet" href="print.css" type="text/css" media="print" >
   <link rel="stylesheet" href="{{STATIC_URL}}css/datepicker3.css">
+  <link rel="stylesheet" href="{{STATIC_URL}}css/select2.css">
 
 
 	<script type="text/javascript" src="{{STATIC_URL}}js/jquery.min.js"></script>
@@ -23,7 +24,8 @@
 
 	<script src="{{ STATIC_URL }}js/bootstrap-datepicker.js"></script>
     <script src="{{ STATIC_URL }}js/locales/bootstrap-datepicker.es.js" charset="UTF-8"></script>
-    <script src="{{ STATIC_URL }}js/typeahead.js" charset="UTF-8"></script>
+    <script src="{{ STATIC_URL }}js/select2.js" charset="UTF-8"></script>
+    <script src="{{ STATIC_URL }}js/select2_locale_es.js" charset="UTF-8"></script>
 
 </head>
 
@@ -104,14 +106,14 @@
 <div class="container">
 	<div class="row clearfix">
 	<div class="col-md-12 column">
-	<div class="jumbotron">
+	<!--div class="jumbotron"-->
 {% block cuerpo %}
 
 		
 			<center><img src="{{STATIC_URL}}img/escudo.png" class="img-circle" /></center>
 		
 {% endblock %}
-</div></div>
+<!--/div--></div>
 	</div>
 </div>
 {% endblock %}

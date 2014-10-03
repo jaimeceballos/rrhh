@@ -44,9 +44,16 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
+DATE_INPUT_FORMATS = (
+    '%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y', # '25-10-2010', '25/10/2006', '25/10/06'
+    '%d %b %Y', '%d %b, %Y',            # '25 Oct 2006', '25 Oct, 2006'
+    '%d %B %Y', '%d %B, %Y',            # '25 October 2006', '25 October, 2006'
+)
+
+
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale.
-USE_L10N = True
+#USE_L10N = True
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True

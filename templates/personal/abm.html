@@ -20,7 +20,11 @@
 				 	<label for="descripcion" class>Fecha nacimiento</label>{{form_persona.fecha_nac}}
 				</div>
 				<div class="form-group">
-					 <label for="descripcion" class>Lugar nacimiento</label>{{form_persona.ciudad_nac}}
+					 <label for="descripcion">Lugar nacimiento</label><br>
+					 				<select style="width:100%" id="id_ciudad_nac" name="ciudad_nac">
+					 					<option {{form_persona.ciudad_nac}} </option>
+					 	
+					 				</select>
 				</div>
 				<div class="form-group">
 					 <label for="descripcion" class>Estado civil</label>{{form_persona.estado_civil}}
@@ -48,7 +52,11 @@
 					 <label for="descripcion" class>Sexo</label>{{form_persona.sexo_id}}
 				</div>
 				<div class="form-group">
-					 <label for="descripcion" class>Lugar de residencia</label>{{form_persona.ciudad_res}}
+					 <label for="descripcion" class>Lugar de residencia</label><br>
+					 				<select style="width:100%" id="id_ciudad_res" name="ciudad_res">
+					 					<option {{form_persona.ciudad_res}} </option>
+					 	
+					 				</select>
 				</div>
 			<br><br><br>
 			<hr>
@@ -57,10 +65,12 @@
 				 <label for="descripcion" class>Fecha de ingreso</label>{{form.fecha_ingreso}}
 			</div>
 			<div class="form-group">
-				 <label for="descripcion" class>Escalafon</label>{{form.escalafon}}
+				 <label for="descripcion" class>Escalafon</label><br>
+					 				<select style="width:100%" id="id_escalafon" name="escalafon">
+					 					<option {{form.escalafon}} </option>
+					 	
+					 				</select>
 			</div>
-			<div id="multiple-datasets">
-			  <input id="test" class="typeahead" type="text" placeholder="NBA and NHL teams">
 			</div>
 			</div>
 			<div class="col-md-12 column">

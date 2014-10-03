@@ -5,3 +5,6 @@ body{
 	padding-top: 50px;
 	
 }
+select{
+	width: 100%;
+}

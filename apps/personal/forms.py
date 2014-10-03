@@ -19,8 +19,8 @@ class PersonasForm(forms.ModelForm):
     nombres =  forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Nombre/s','required':'required'})),required=True)
     tipo_doc = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefTipoDocumento.objects.all()) 
     nro_doc = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Numero de documento','required':'required'})),required=True)
-    ciudad_nac = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefCiudades.objects.filter(pais=RefPaises.objects.filter(descripcion__contains='ARGENTINA').values('id')))
-    ciudad_res = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefCiudades.objects.filter(pais=RefPaises.objects.filter(descripcion__contains='ARGENTINA').values('id')))
+    ciudad_nac = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'required':'required'})),queryset=RefCiudades.objects.filter(pais=RefPaises.objects.filter(descripcion__contains='ARGENTINA').values('id')))
+    ciudad_res = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'required':'required'})),queryset=RefCiudades.objects.filter(pais=RefPaises.objects.filter(descripcion__contains='ARGENTINA').values('id')))
     sexo_id = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefSexo.objects.all()) 
     fecha_nac = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Fecha de nacimiento','required':'required','readonly':'readonly'})),required=True)
     estado_civil =  forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefEstadosciv.objects.all())
@@ -34,11 +34,11 @@ class PersonasForm(forms.ModelForm):
 
 class PersonalForm(forms.ModelForm):
     legajo = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Legajo','required':'required'})),required=True)
-    fecha_ingreso = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Fecha de ingreso','required':'required','readonly':'readonly'})),required=True)
+    fecha_ingreso = forms.CharField(widget=forms.DateInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Fecha de ingreso','required':'required','readonly':'readonly'})),required=True)
     ant_otro_organismo = forms.CharField(widget=forms.TextInput(attrs=dict({'class':'form-control input-block-level', 'placeholder':'Antiguedad reconocida de otros organismos','required':'required'})),required=True)
-    escalafon = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'class':'form-control input-block-level','required':'required'})),queryset=RefEscalafon.objects.all())
+    escalafon = forms.ModelChoiceField(widget=forms.Select(attrs=dict({'required':'required'})),queryset=RefEscalafon.objects.all())
 
 
     class Meta:
         model = Personal
-        exclude = ('presona_id','credencial','nro_cuenta_bco','nro_seros')
+        exclude = ('persona_id','credencial','nro_cuenta_bco','nro_seros')
