@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'^$', 'apps.accounts.views.logout', name='logout'),
     url(r'^personal/', include('apps.personal.urls')),
     url(r'^referencias/', include('apps.referencias.urls')),
+    url(r'^licencias/', include('apps.licencias.urls')),
 )

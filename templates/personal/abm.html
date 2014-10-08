@@ -4,37 +4,34 @@
 
 <h3> ABM de Personal </h3>
 		<hr>
-		{% if not persona.id and not personal.id %}
+		{% if not personal.id %}
 		<form role="form"  method="POST" action ="{% url 'alta_personal' %}">{% csrf_token %}
 		{% else %}
-		<form role="form"  method="POST" action ="">{% csrf_token %}
+		<form role="form"  method="POST" action ="{% url 'editar_personal' personal.id %}">{% csrf_token %}
 		{% endif %}
 			<div class="col-md-6 column">
 				<div class="form-group">
-					 <label for="descripcion" class>Apellido/s</label>{{form_persona.apellidos}}
+					 <label for="descripcion">Apellido/s</label>{{form_persona.apellidos}}
 				</div>
 				<div class="form-group">
-					 <label for="descripcion" class>Tipo Documento</label>{{form_persona.tipo_doc}}
+					 <label for="descripcion">Tipo Documento</label>{{form_persona.tipo_doc}}
 				</div>
 				<div class="form-group">
-				 	<label for="descripcion" class>Fecha nacimiento</label>{{form_persona.fecha_nac}}
+				 	<label for="descripcion">Fecha nacimiento</label>{{form_persona.fecha_nac}}
 				</div>
 				<div class="form-group">
 					 <label for="descripcion">Lugar nacimiento</label><br>
-					 				<select style="width:100%" id="id_ciudad_nac" name="ciudad_nac">
-					 					<option {{form_persona.ciudad_nac}} </option>
-					 	
-					 				</select>
+					 				{{form_persona.ciudad_nac}} 
 				</div>
 				<div class="form-group">
-					 <label for="descripcion" class>Estado civil</label>{{form_persona.estado_civil}}
+					 <label for="descripcion">Estado civil</label>{{form_persona.estado_civil}}
 				</div>
 				<hr>
 				<div class="form-group">
-					 <label for="descripcion" class>Legajo</label>{{form.legajo}}
+					 <label for="descripcion">Legajo</label>{{form.legajo}}
 				</div>
 				<div class="form-group">
-					 <label for="descripcion" class>Antiguedad en otros organismos</label>{{form.ant_otro_organismo}}
+					 <label for="descripcion">Antiguedad en otros organismos</label>{{form.ant_otro_organismo}}
 				</div>
 			
 				
@@ -53,10 +50,7 @@
 				</div>
 				<div class="form-group">
 					 <label for="descripcion" class>Lugar de residencia</label><br>
-					 				<select style="width:100%" id="id_ciudad_res" name="ciudad_res">
-					 					<option {{form_persona.ciudad_res}} </option>
-					 	
-					 				</select>
+					 				{{form_persona.ciudad_res}}
 				</div>
 			<br><br><br>
 			<hr>
@@ -66,10 +60,7 @@
 			</div>
 			<div class="form-group">
 				 <label for="descripcion" class>Escalafon</label><br>
-					 				<select style="width:100%" id="id_escalafon" name="escalafon">
-					 					<option {{form.escalafon}} </option>
-					 	
-					 				</select>
+					 				{{form.escalafon}} 
 			</div>
 			</div>
 			</div>
@@ -78,7 +69,7 @@
 			 	<button type="submit" class="btn btn-info pull-right">Nuevo</button><br><br>
 			 {% else %}
 			 	<button type="submit" class="btn btn-info pull-right">Modificar</button>  
-			 	<a href="{% url 'ciudad' %}" class="btn btn-link pull-right" >Cancelar</a>
+			 	<a href="{% url 'alta_personal' %}" class="btn btn-link pull-right" >Cancelar</a>
 			 	<br><br>
 			 {% endif %}
 			 </div>
@@ -111,8 +102,8 @@
 								{{elemento.persona_id.apellidos}}, {{elemento.persona_id.nombres}}
 							</td>							
 							<td align="center">
-								<a class="btn btn-xs btn-success" href=""> <i class="glyphicon glyphicon-edit"></i> Editar </a>
-								<a class="btn btn-xs btn-danger" href="" onclick="return confirm('Por favor confirme que desea eliminar el registro.')"> <i class="glyphicon glyphicon-trash"></i> Eliminar </a>
+								<a class="btn btn-xs btn-success" href="{% url 'editar_personal' elemento.id %}"> <i class="glyphicon glyphicon-edit"></i> Editar </a>
+								<a class="btn btn-xs btn-danger" href="{% url 'remove_personal' elemento.id %}" onclick="return confirm('Por favor confirme que desea eliminar el registro.')"> <i class="glyphicon glyphicon-trash"></i> Eliminar </a>
 
 							</td>
 						</tr>

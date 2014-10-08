@@ -13,7 +13,7 @@ class Personas(models.Model):
     apellidos = models.CharField(max_length = 100,verbose_name='apellidos')
     nombres = models.CharField(max_length = 150,verbose_name='nombres')
     tipo_doc = models.ForeignKey('referencias.RefTipoDocumento', verbose_name='tipo documento',on_delete = models.PROTECT)
-    nro_doc = models.CharField(max_length=50,unique=True)
+    nro_doc = models.CharField(max_length=50)
     ciudad_nac = models.ForeignKey('referencias.RefCiudades',  blank = True, null = True,related_name='ciudad_nac', on_delete = models.PROTECT)
     pais_nac =models.ForeignKey('referencias.RefPaises',  blank = True, null = True,related_name='pais_nac', on_delete = models.PROTECT)
     ciudad_res = models.ForeignKey('referencias.RefCiudades', blank = True, null = True,related_name='ciudad_res', on_delete = models.PROTECT)
@@ -45,15 +45,16 @@ class Personal(models.Model):
     id = models.AutoField(primary_key=True)
     persona_id = models.OneToOneField('Personas', unique=True,on_delete=models.PROTECT)
     legajo = models.CharField(max_length=6)
-    credencial = models.IntegerField()
+    credencial = models.IntegerField(blank=True,null=True)
     nro_cuenta_bco = models.CharField(max_length=20)
     nro_seros = models.CharField(max_length=15)
     fecha_ingreso = models.DateField(null=True,blank=True)
     ant_otro_organismo = models.IntegerField(null=True,blank=True)
     escalafon = models.ForeignKey('referencias.RefEscalafon',related_name='escalafon',on_delete=models.PROTECT)
+    borrado = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return u'%s' % (self.id)
+        return u'%s - %s, %s' % (self.persona_id.nro_doc,self.persona_id.apellidos,self.persona_id.nombres)
     
     class Meta:
 
